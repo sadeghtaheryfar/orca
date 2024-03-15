@@ -8,6 +8,12 @@
 a{
     color: black !important;
     text-decoration: none !important;
+    transition: 0.5s;
+}
+
+
+a:hover{
+    color: #157EC1 !important;
 }
 
 
@@ -26,14 +32,14 @@ body{
 /* ......................................................................................................................... ..*/
 
 #header-home{
-    min-width: 50vw;
-    height: 6.5rem;
+    min-width: 100vw;
+    height: 6rem;
     position: fixed;
     top: 0;
     left: 0;
-    padding: 1.5rem;
+    padding: 1.5rem 4.5rem;
     background-color: white;
-    z-index: 999;
+    z-index: 10;
     text-wrap: nowrap;
 }
 

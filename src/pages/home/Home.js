@@ -40,7 +40,7 @@ const Home = () => {
 
                         <div className='w-full mt-[2rem]'>
                             <button className='w-full bg-[#157EC1] flex justify-center items-center p-[1rem] rounded-full text-white font-bold'>
-                                <img src={join_us_icon} />
+                                <img className='mr-[0.5rem]' src={join_us_icon} />
 
                                 <span>Join us</span>
                             </button>
@@ -50,7 +50,7 @@ const Home = () => {
 
                 <section className='w-[50%] min-w-[30%] h-full p-[1rem] flex justify-end'>
                     <Swiper
-                            className="h-full"
+                            className="h-full z-20"
                             spaceBetween={50}
                             slidesPerView={1}
                             grabCursor={'pointer'}
