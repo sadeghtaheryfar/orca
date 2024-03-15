@@ -1,0 +1,133 @@
+/* defult css .................................................................................................................. */
+
+*{
+    box-sizing: border-box;
+}
+
+
+a{
+    color: black !important;
+    text-decoration: none !important;
+}
+
+
+li{
+    list-style-type: none;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+
+body{
+    overflow-x: hidden;
+}
+
+
+/* ......................................................................................................................... ..*/
+
+#header-home{
+    min-width: 50vw;
+    height: 6.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1.5rem;
+    background-color: white;
+    z-index: 999;
+    text-wrap: nowrap;
+}
+
+
+#header-home > ul{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%;
+}
+
+
+#header-home li{
+    margin-right: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+
+#header-home li span{
+    color: #525252;
+    transition: 0.5s;
+}
+
+
+#header-home li span:hover{
+    color: #157EC1;
+}
+
+
+.active-menu{
+    color: #157EC1 !important;
+}
+
+
+.slider-home{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    width: 100%;
+    bottom: var(--swiper-pagination-bottom, 32px);
+}
+
+
+.slider-home > div{
+    display: flex;
+    position: absolute;
+    background-color: #0000003d;
+    border-radius: 100px;
+    padding: 0.5rem 0.8rem;
+}
+
+
+.slider-home .swiper-button-next{
+    position: unset;
+    height: auto !important;
+    width: auto !important;
+    margin: 0px !important;
+}
+
+
+
+.slider-home .swiper-button-next::after{
+    font-size: 16px;
+    font-weight: 900;
+    color: white;
+}
+
+.slider-home .swiper-button-prev{
+    position: unset;
+    height: auto !important;
+    width: auto !important;
+    margin: 0px !important;
+}
+
+
+.slider-home .swiper-button-prev::after{
+    font-size: 16px;
+    font-weight: 900;
+    color: white;
+}
+
+
+.slider-home .swiper-pagination{
+    position: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 0.5rem;
+}
+
+
+.slider-home .swiper-pagination .swiper-pagination-bullet-active{
+    background-color: white !important;
+}
