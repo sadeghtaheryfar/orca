@@ -1,99 +1,104 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import { Link } from 'react-router-dom';
 import 'swiper/css';
-import { Pagination, Navigation } from 'swiper/modules';
 
-//  images ...................................................................................................
+//  images ................................................................................................
+import logo_comin_son from '../../images/green-technology.png';
 import slider_home_1 from './../../images/slider-home-1.png';
 import slider_home_2 from './../../images/slider-home-2.png';
 import slider_home_3 from './../../images/slider-home-3.png';
 import slider_home_4 from './../../images/slider-home-4.png';
-import slider_home_5 from './../../images/slider-home-5.png';
-import join_us_icon from './../../images/join-us-icon.png';
-import green_technology from './../../images/green-technology.png';
 
 const Home = () => {
     return (
         <>
-            <main id='main-home' className='min-h-[100vh] w-[100vw] flex justify-between items-center'>
-                <section className='w-[100%] h-full flex justify-center items-center pt-[10rem] pb-[2rem]'>
-                    <div className='w-[50%]'>
-                        <div className='text-justify'>
-                            <p>
-                                At Orca, we believe in the transformative power of public awareness to shape policies and corporate strategies for a sustainable future.  Our platform is dedicated to harnessing the collective strength of public engagement to drive meaningful change in environmental, social, and economic sustainability. 
-                            </p>
+            <main id='main-home'>
+                <div className='h-full flex lg:items-start lg:justify-center flex-col lg:mr-[6rem]'>
+                    <h2 className='text-[28px] text-[#525252] font-semibold mb-[2rem]'>Welcome to Orca</h2>
 
-                            <br />
+                    <p>
+                        At Orca, we believe in the transformative power of public awareness to shape policies and corporate strategies for a sustainable future.  Our platform is dedicated to harnessing the collective strength of public engagement to drive meaningful change in environmental, social, and economic sustainability. 
+                        <br/>Join us on our mission to empower individuals and communities to make a positive impact on the world around us. Together, we can create a brighter, more sustainable future for generations to come. 
+                    </p>
 
-                            <p>
-                                Join us on our mission to empower individuals and communities to make a positive impact on the world around us. Together, we can create a brighter, more sustainable future for generations to come. 
-                            </p>
-
-                            <br />
-
-                            <p className='flex justify-center items-center'>
-                                Stay Tuned for more updates coming soon! <img className='ml-[0.5rem]' src={green_technology} />
-                            </p>
-                        </div>
-
-                        <div className='w-full mt-[2rem]'>
-                            <button className='w-full bg-[#157EC1] flex justify-center items-center p-[1rem] rounded-full text-white font-bold'>
-                                <img className='mr-[0.5rem]' src={join_us_icon} />
-
-                                <span>Join us</span>
-                            </button>
-                        </div>
+                    <div className='bg-[#EDFDED] px-[1.2rem] py-[0.7rem] rounded-[12px] text-[#525252] flex justify-start items-center w-full mt-[2rem]'>
+                        <img className='mr-[0.5rem]' src={logo_comin_son} />
+                        
+                        <span>Stay Tuned for more updates coming soon!</span>
                     </div>
-                </section>
 
-                <section className='w-[50%] min-w-[30%] h-full p-[1rem] flex justify-end'>
+                    <Link className='hide-pc text-center w-full my-[1rem] justify-center py-[0.8rem] px-[1.2rem] bg-[#157EC1] font-bold text-[1.2rem] text-white rounded-full'>Join Us</Link>
+                </div>
+
+                <div>
                     <Swiper
-                            className="h-full z-20"
-                            spaceBetween={50}
-                            slidesPerView={1}
-                            grabCursor={'pointer'}
-                            loop={'true'}
-                            pagination={{
-                                clickable: true,
-                                el: '.swiper-pagination',
-                            }}
-                            navigation={{ 
-                                nextEl: '.swiper-button-next',
-                                prevEl: '.swiper-button-prev',
-                            }}
-                            modules={[Pagination, Navigation]}
-                        >
-                        <SwiperSlide>
-                            <img className="h-full" src={slider_home_1} />
+                        loop={'true'}
+                        direction={'vertical'}
+                        slidesPerView={'auto'}
+                        centeredSlides={'true'}
+                        grabCursor={'true'}
+                        spaceBetween={30}
+                        className="main-slider-home min-w-[17rem] my-[-2rem] hide-mobile"
+                    >
+                        <SwiperSlide className='h-auto'>
+                            <img src={slider_home_1} />
                         </SwiperSlide>
 
-                        <SwiperSlide>
-                            <img className="h-full" src={slider_home_2} />
+                        
+                        <SwiperSlide className='h-auto'>
+                            <img src={slider_home_2} />
                         </SwiperSlide>
 
-                        <SwiperSlide>
-                            <img className="h-full" src={slider_home_3} />
+                        
+                        <SwiperSlide className='h-auto'>
+                            <img src={slider_home_3} />
                         </SwiperSlide>
 
-                        <SwiperSlide>
-                            <img className="h-full" src={slider_home_4} />
+                        
+                        <SwiperSlide className='h-auto'>
+                            <img src={slider_home_4} />
                         </SwiperSlide>
-
-                        <SwiperSlide>
-                            <img className="h-full" src={slider_home_5} />
-                        </SwiperSlide>
-
-                        <div className='slider-home'>
-                            <div>
-                                <div className='swiper-button-prev' />
-                                <div className='swiper-pagination' />
-                                <div className='swiper-button-next' />
-                            </div>
-                        </div>
                     </Swiper>
-                </section>
+                </div>
+
+                <div>
+                    <Swiper
+                        loop={'true'}
+                        slidesPerView={'auto'}
+                        centeredSlides={'true'}
+                        grabCursor={'true'}
+                        spaceBetween={10}
+                        className="mx-[-2rem] mt-[2rem] hide-pc"
+                    >
+                        <SwiperSlide className='w-[55%]'>
+                            <img src={slider_home_1} />
+                        </SwiperSlide>
+
+                        
+                        <SwiperSlide className='w-[55%]'>
+                            <img src={slider_home_2} />
+                        </SwiperSlide>
+
+                        
+                        <SwiperSlide className='w-[55%]'>
+                            <img src={slider_home_3} />
+                        </SwiperSlide>
+
+                        
+                        <SwiperSlide className='w-[55%]'>
+                            <img src={slider_home_4} />
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
+
+                <div className='mt-[2rem] text-[#525252] hide-pc'>
+                    <ul className='flex justify-center'>
+                        <li>About Us</li>
+                        <li className='mx-[1rem]'>Privacy Policy</li>
+                        <li>Terms and Conditions</li>
+                    </ul>
+                </div>
             </main>
         </>
     );

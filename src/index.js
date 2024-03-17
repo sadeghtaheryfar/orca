@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router ,Route,Routes, createBrowserRouter, createRoutesFromElements,RouterProvider } from "react-router-dom";
 import HomeLeyout from './leyouts/HomeLeyout';
+import PostLeyout from './leyouts/PostLeyout';
 import Home from './pages/home/Home';
 import News from './pages/news/News';
+import GreenBusinesses from './pages/GreenBusinesses/GreenBusinesses';
+import GreenBusinessessShow from './pages/GreenBusinesses/GreenBusinessessShow';
 import './index.css';
 
 const routers = createBrowserRouter(
@@ -11,7 +14,12 @@ const routers = createBrowserRouter(
     <>
       <Route path="" element={<HomeLeyout />}>
           <Route index={true} element={<Home />} />
+          <Route path={'/GreenBusinesses/:postid'} element={<GreenBusinessessShow />} />
+      </Route>
+
+      <Route path="" element={<PostLeyout />}>
           <Route path={'/news'} element={<News />} />
+          <Route path={'/GreenBusinesses'} element={<GreenBusinesses />} />
       </Route>
     </>
   )
