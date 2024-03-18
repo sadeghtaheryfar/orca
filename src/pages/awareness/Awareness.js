@@ -8,7 +8,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const News = () => {
+
+const Awareness = () => {
     return (
         <>
             <main id='main-posts'>
@@ -308,4 +309,4 @@ const News = () => {
     );
 };
 
-export default News;
+export default Awareness;

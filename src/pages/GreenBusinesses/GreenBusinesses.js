@@ -117,7 +117,7 @@ const GreenBusinesses = () => {
                 </div>
 
                 <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>
-                    <Link to={'/GreenBusinesses/1'} className='border border-[#E6E6E6] rounded-[12px] p-[0.5rem] flex flex-col justify-center bg-white'>
+                    <Link to={'/greenBusinesses/1'} className='border border-[#E6E6E6] rounded-[12px] p-[0.5rem] flex flex-col justify-center bg-white'>
                         <div>
                             <h6 className='text-[14px] font-semibold'>Business Name</h6>
                         </div>

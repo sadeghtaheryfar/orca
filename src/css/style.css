@@ -205,7 +205,7 @@ main{
     width: calc(100vw - 14rem);
     min-height: 100vh;
     margin-left: 14rem;
-    padding: 2rem 8rem;
+    padding: 2rem 14rem;
 }
 
 
@@ -218,6 +218,91 @@ main{
     width: 100%;
     border-radius: 1rem;
     margin: 1rem 0rem;
+}
+
+
+.slider-news-post > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.slider-news-post .swiper-pagination{
+    background-color: rgba(0, 0, 0, 0.281);
+    border-radius: 100px;
+    padding: 0.1rem 0.3rem;
+    bottom: 1rem !important;
+    width: max-content !important;
+    left: auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;
+}
+
+
+.slider-news-post .swiper-pagination .swiper-pagination-bullet-active{
+    background-color: white;
+    opacity: 1 !important;
+}
+
+
+.slider-news-post .swiper-pagination .swiper-pagination-bullet{
+    background-color: white;
+    opacity: 0.4;
+}
+
+
+.slider-news-post .swiper-button-prev{
+    background-color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100px;
+    opacity: 1 !important;
+    font-size: 15px !important;
+    border: 1px solid #C0C2C5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.slider-news-post .swiper-button-prev::after{
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: -0.2rem;
+    color: black;
+}
+
+
+.slider-news-post .swiper-button-next{
+    background-color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100px;
+    opacity: 1 !important;
+    font-size: 15px !important;
+    border: 1px solid #C0C2C5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.slider-news-post .swiper-button-next::after{
+    font-size: 20px;
+    font-weight: 900;
+    margin-right: -0.2rem;
+    color: black;
+}
+
+
+@media screen and (max-width:1250px){
+    #main-posts{
+        padding: 2rem 8rem;
+    }
 }
 
 
@@ -274,5 +359,13 @@ main{
         align-items: start;
         flex-direction: column;
         background-color: #F5F5F5;
+    }
+
+    .slider-news-post .swiper-button-prev{
+        display: none;
+    }
+
+    .slider-news-post .swiper-button-next{
+        display: none;
     }
 }

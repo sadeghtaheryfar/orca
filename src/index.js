@@ -7,6 +7,7 @@ import Home from './pages/home/Home';
 import News from './pages/news/News';
 import GreenBusinesses from './pages/GreenBusinesses/GreenBusinesses';
 import GreenBusinessessShow from './pages/GreenBusinesses/GreenBusinessessShow';
+import Awareness from './pages/awareness/Awareness';
 import './index.css';
 
 const routers = createBrowserRouter(
@@ -14,12 +15,13 @@ const routers = createBrowserRouter(
     <>
       <Route path="" element={<HomeLeyout />}>
           <Route index={true} element={<Home />} />
-          <Route path={'/GreenBusinesses/:postid'} element={<GreenBusinessessShow />} />
+          <Route path={'/greenBusinesses/:postid'} element={<GreenBusinessessShow />} />
       </Route>
 
       <Route path="" element={<PostLeyout />}>
           <Route path={'/news'} element={<News />} />
-          <Route path={'/GreenBusinesses'} element={<GreenBusinesses />} />
+          <Route path={'/greenBusinesses'} element={<GreenBusinesses />} />
+          <Route path={'/awareness'} element={<Awareness />} />
       </Route>
     </>
   )
