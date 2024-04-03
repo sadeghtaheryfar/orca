@@ -1,5 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay} from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import 'swiper/css';
 
@@ -14,10 +15,10 @@ const Home = () => {
     return (
         <>
             <main id='main-home'>
-                <div className='h-full flex lg:items-start lg:justify-center flex-col lg:mr-[6rem]'>
+                <div className='h-full flex lg:items-start lg:justify-center flex-col lg:w-[65%] lg:mr-[2rem] px-[2rem] lg:pt-[2rem]'>
                     <h2 className='text-[28px] text-[#525252] font-semibold mb-[2rem]'>Welcome to Orca</h2>
 
-                    <p>
+                    <p className='text-justify'>
                         At Orca, we believe in the transformative power of public awareness to shape policies and corporate strategies for a sustainable future.  Our platform is dedicated to harnessing the collective strength of public engagement to drive meaningful change in environmental, social, and economic sustainability. 
                         <br/>Join us on our mission to empower individuals and communities to make a positive impact on the world around us. Together, we can create a brighter, more sustainable future for generations to come. 
                     </p>
@@ -31,7 +32,7 @@ const Home = () => {
                     <Link className='hide-pc text-center w-full my-[1rem] justify-center py-[0.8rem] px-[1.2rem] bg-[#157EC1] font-bold text-[1.2rem] text-white rounded-full'>Join Us</Link>
                 </div>
 
-                <div>
+                <div className="w-[35%]">
                     <Swiper
                         loop={'true'}
                         direction={'vertical'}
@@ -39,24 +40,30 @@ const Home = () => {
                         centeredSlides={'true'}
                         grabCursor={'true'}
                         spaceBetween={30}
-                        className="main-slider-home min-w-[17rem] my-[-2rem] hide-mobile"
+                        speed={2000}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        }}
+                        modules={[Autoplay,]}
+                        className="main-slider-home min-w-[20rem] my-[-2rem] hide-mobile"
                     >
-                        <SwiperSlide className='h-auto'>
+                        <SwiperSlide className='w-full'>
                             <img src={slider_home_1} />
                         </SwiperSlide>
 
                         
-                        <SwiperSlide className='h-auto'>
+                        <SwiperSlide className='w-full'>
                             <img src={slider_home_2} />
                         </SwiperSlide>
 
                         
-                        <SwiperSlide className='h-auto'>
+                        <SwiperSlide className='w-full'>
                             <img src={slider_home_3} />
                         </SwiperSlide>
 
                         
-                        <SwiperSlide className='h-auto'>
+                        <SwiperSlide className='w-full'>
                             <img src={slider_home_4} />
                         </SwiperSlide>
                     </Swiper>
@@ -69,6 +76,12 @@ const Home = () => {
                         centeredSlides={'true'}
                         grabCursor={'true'}
                         spaceBetween={10}
+                        speed={2000}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        }}
+                        modules={[Autoplay,]}
                         className="mx-[-2rem] mt-[2rem] hide-pc"
                     >
                         <SwiperSlide className='w-[55%]'>
@@ -92,7 +105,7 @@ const Home = () => {
                     </Swiper>
                 </div>
 
-                <div className='mt-[2rem] text-[#525252] hide-pc'>
+                <div className='mt-[2rem] text-[#525252] hide-pc text-[12px] w-full flex justify-center'>
                     <ul className='flex justify-center'>
                         <li>About Us</li>
                         <li className='mx-[1rem]'>Privacy Policy</li>

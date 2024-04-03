@@ -8,8 +8,10 @@ import News from './pages/news/News';
 import GreenBusinesses from './pages/GreenBusinesses/GreenBusinesses';
 import GreenBusinessessShow from './pages/GreenBusinesses/GreenBusinessessShow';
 import Awareness from './pages/awareness/Awareness';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './index.css';
 
+const queryClient = new QueryClient();
 const routers = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -29,6 +31,8 @@ const routers = createBrowserRouter(
 
 const root = ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={routers} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={routers} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

@@ -45,7 +45,7 @@ main{
 #aside-home{
     display: flex;
     justify-content: top;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
     position: fixed;
     left: 0;
@@ -114,7 +114,7 @@ main{
 #nav-menu-main{
     display: flex;
     justify-content: top;
-    align-items: start;
+    align-items: flex-start;
     position: fixed;
     width: 100vw;
     height: 4rem;
@@ -197,7 +197,7 @@ main{
     margin-left: 14rem;
     padding: 2rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 
@@ -211,6 +211,11 @@ main{
 
 .main-slider-home{
     height: 100vh;
+}
+
+
+.main-slider-home .swiper-slide{
+    height: auto !important;
 }
 
 
@@ -299,9 +304,20 @@ main{
 }
 
 
+.swiper-button-lock{
+    display:none !important;   
+}
+
+
 @media screen and (max-width:1250px){
     #main-posts{
         padding: 2rem 8rem;
+    }
+
+    #main-home > div:nth-child(1){
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-right: 2rem;
     }
 }
 
@@ -331,7 +347,6 @@ main{
     #header-post{
         width: 100%;
         overflow-x: hidden;
-        border-bottom: 1px solid #E6E6E6;
         padding: 1rem;
         display: flex;
         justify-content: center;
@@ -345,7 +360,7 @@ main{
         margin-left: 0rem;
         margin-bottom: 4rem;
         padding: 1rem;
-        align-items: start;
+        align-items: flex-start;
         flex-direction: column;
     }
 
@@ -356,7 +371,7 @@ main{
         margin-left: 0rem;
         margin-bottom: 4rem;
         padding: 1rem;
-        align-items: start;
+        align-items: flex-start;
         flex-direction: column;
         background-color: #F5F5F5;
     }
@@ -367,5 +382,11 @@ main{
 
     .slider-news-post .swiper-button-next{
         display: none;
+    }
+
+    #main-home > div:nth-child(1){
+        padding-left: 0rem;
+        padding-right: 0rem;
+        margin-right: 0rem;
     }
 }
