@@ -27,8 +27,26 @@ const fetchData = async (key, page = 1,q = "") => {
     return response.json();
 };
 
+const fetchTopic = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    const response = await fetch('https://api.theorcasocial.com/v1/topics', requestOptions);
+    if (!response.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    return response.json();
+};
+
 const GreenBusinesses = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [tocpId, settocpId] = useState('');
     const [bottomReached, setBottomReached] = useState(false);
     const { data, fetchNextPage,refetch, hasNextPage, isLoading, isError, error } = useInfiniteQuery(
     ['page','q','data','GreenBusinesses'],
@@ -39,10 +57,36 @@ const GreenBusinesses = () => {
         },
         }
     );
+    const { data : Topic, isLoadingTopic, errorTopic } = useQuery(['Topic','AwarnesTopic'], fetchTopic);
 
     useEffect(() => {
         refetch(1);
     }, [searchTerm]);
+
+    const topicHandel = (e,item) => {
+        const btns = document.querySelectorAll('.btn-topic');
+        btns.forEach((btn,index) => {
+            btn.classList.remove('bg-[#3D42DF]');
+            btn.classList.remove('text-white');
+        });
+
+        item.target.classList.add('bg-[#3D42DF]');
+        item.target.classList.add('text-white');
+        
+        settocpId(e);
+        if(e == tocpId){
+            settocpId('all');
+            const btns = document.querySelectorAll('.btn-topic');
+            btns.forEach((btn,index) => {
+                btn.classList.remove('bg-[#3D42DF]');
+                btn.classList.remove('text-white');
+            });
+        }
+    }
+
+    useEffect(() => {
+        refetch(1);
+    }, [tocpId]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -100,77 +144,13 @@ const GreenBusinesses = () => {
                             </button>
                         </SwiperSlide>
 
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
+                        {Topic?.data.map((item) => (
+                            <SwiperSlide className='w-auto my-[1rem]'>
+                                <button onClick={(e) => topicHandel(item?.id,e)} className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium btn-topic'>
+                                    {item?.title}
+                                </button>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
             </div>
@@ -210,77 +190,13 @@ const GreenBusinesses = () => {
                             </button>
                         </SwiperSlide>
 
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
+                        {Topic?.data.map((item) => (
+                            <SwiperSlide className='w-auto my-[1rem]'>
+                                <button onClick={(e) => topicHandel(item?.id,e)} className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium btn-topic'>
+                                    {item?.title}
+                                </button>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
 

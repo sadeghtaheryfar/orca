@@ -16,7 +16,7 @@ import TimeAgo from '../../components/TimeAgo';
 
 const queryClient = new QueryClient();
 
-const fetchData = async (key, page = 1,q = "") => {
+const fetchData = async (key, page = 1,q = "",topic) => {
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
 
@@ -26,7 +26,31 @@ const fetchData = async (key, page = 1,q = "") => {
         redirect: "follow"
     };
 
-    const response = await fetch('https://api.theorcasocial.com/v1/awareness?per_page=10&page=' + page + '&q=' + q, requestOptions);
+    let topicU = "";
+
+    if(topic && topic != "all")
+    {
+        topicU = '&topics[0]=' + topic;
+    }
+
+    const response = await fetch('https://api.theorcasocial.com/v1/awareness?per_page=10&page=' + page + '&q=' + q + topicU, requestOptions);
+    if (!response.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    return response.json();
+};
+
+const fetchTopic = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    const response = await fetch('https://api.theorcasocial.com/v1/topics', requestOptions);
     if (!response.ok) {
         throw new Error('Failed to fetch data');
     }
@@ -35,20 +59,47 @@ const fetchData = async (key, page = 1,q = "") => {
 
 const Awareness = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [tocpId, settocpId] = useState('');
     const [bottomReached, setBottomReached] = useState(false);
     const { data, fetchNextPage,refetch, hasNextPage, isLoading, isError, error } = useInfiniteQuery(
-    ['page','q','data','Awareness'],
-    ({ pageParam = 1 }) => fetchData('page', pageParam, searchTerm),
+    ['page','q','data','Awareness','topic'],
+    ({ pageParam = 1 }) => fetchData('page', pageParam, searchTerm,tocpId),
         {
         getNextPageParam: (lastPage, allPages) => {
             return (lastPage.meta.current_page == lastPage.meta.last_page) ? null : lastPage.meta.current_page + 1; // Assuming the response has a "nextPage" property
         },
         }
     );
+    const { data : Topic, isLoadingTopic, errorTopic } = useQuery(['Topic','AwarnesTopic'], fetchTopic);
 
     useEffect(() => {
         refetch(1);
     }, [searchTerm]);
+
+    const topicHandel = (e,item) => {
+        const btns = document.querySelectorAll('.btn-topic');
+        btns.forEach((btn,index) => {
+            btn.classList.remove('bg-[#3D42DF]');
+            btn.classList.remove('text-white');
+        });
+
+        item.target.classList.add('bg-[#3D42DF]');
+        item.target.classList.add('text-white');
+        
+        settocpId(e);
+        if(e == tocpId){
+            settocpId('all');
+            const btns = document.querySelectorAll('.btn-topic');
+            btns.forEach((btn,index) => {
+                btn.classList.remove('bg-[#3D42DF]');
+                btn.classList.remove('text-white');
+            });
+        }
+    }
+
+    useEffect(() => {
+        refetch(1);
+    }, [tocpId]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -104,77 +155,13 @@ const Awareness = () => {
                             </button>
                         </SwiperSlide>
 
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
+                        {Topic?.data.map((item) => (
+                            <SwiperSlide className='w-auto my-[1rem]'>
+                                <button onClick={(e) => topicHandel(item?.id,e)} className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium btn-topic'>
+                                    {item?.title}
+                                </button>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
             </div>
@@ -215,77 +202,13 @@ const Awareness = () => {
                             </button>
                         </SwiperSlide>
 
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
-
-                        <SwiperSlide className='w-auto my-[1rem]'>
-                            <button className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium'>
-                                <span>Topic</span>
-                            </button>
-                        </SwiperSlide>
+                        {Topic?.data.map((item) => (
+                            <SwiperSlide className='w-auto my-[1rem]'>
+                                <button onClick={(e) => topicHandel(item?.id,e)} className='flex items-center justify-center border border-[#E6E6E6] rounded-full px-[0.7rem] py-[0.4rem] font-medium btn-topic'>
+                                    {item?.title}
+                                </button>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
 
@@ -306,11 +229,10 @@ const Awareness = () => {
                                 <div className='flex mb-[1rem]'>
                                     <div className='w-[2.5rem] min-w-[2.5rem] h-[2.5rem] mr-[0.5rem]'>
                                         {data?.author.avatar?.thumbnail ? (
-                                            <ApiImage path={data?.author?.avatar?.original} clas='w-full rounded-full h-full' disk={data?.author?.avatar.disk} />
+                                            <ApiImage mime_type={data?.author?.avatar?.mime_type} path={data?.author?.avatar?.original} clas='w-full rounded-full h-full' disk={data?.author?.avatar.disk} />
                                         ) : (
                                             <img className='w-full h-full rounded-full' src="https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg" />
                                         )}
-                                            
                                     </div>
 
                                     <div>

@@ -115,7 +115,7 @@ const News = () => {
                     </Swiper>
                 </div>
             </div>
-            <main id='main-posts' className='!p-[0rem] !bg-white'>
+            <main id='main-posts' className='!bg-white no-padding-mobile'>
                 <div className='hide-mobile'>
                     <h2 className='font-semibold text-[28px]'>news</h2>
                 </div>

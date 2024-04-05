@@ -78,7 +78,7 @@ const GreenBusinessessShow = () => {
                     >
                         {data?.data?.media.map((item) => (
                             <SwiperSlide key={Math.random()}>
-                                <ApiImage path={item?.original} clas='w-full rounded-[1rem]' disk={item?.disk}  />
+                                <ApiImage mime_type={item?.mime_type} path={item?.original} clas='w-full rounded-[1rem]' disk={item?.disk}  />
                             </SwiperSlide>
                         ))}
 

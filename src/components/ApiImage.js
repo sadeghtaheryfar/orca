@@ -26,10 +26,18 @@ const fetchData = async ({path, disk}) => {
 const ApiImage = (path) => {
     const params = { path: path.path, disk: path.disk };
     const { data: url, isLoading, error } = useQuery(['post', params], () => fetchData(params));
+    const type = path.mime_type.split('/');
 
     return (
         <>
-            <img src={url} className={path.clas} />
+            {type[0] == 'video' ? (
+                <video className={path.clas} controls>
+                    <source src={url} type={type[0] + '/' + type[1]} />
+                </video>
+            ) : (
+            
+                <img src={url} className={path.clas} />
+            )}
         </>
     );
 };
