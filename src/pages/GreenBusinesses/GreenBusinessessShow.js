@@ -43,7 +43,7 @@ const GreenBusinessessShow = () => {
             <main id='main-posts' className='!bg-white'>
                 <div className='flex items-center'>
                     <div>
-                        <img className='w-[7rem]'  src={amazonelogo} />
+                        <img className='w-[7rem] mr-[0.5rem]'  src={data?.data?.logo} />
                     </div>
 
                     <div>

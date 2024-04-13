@@ -29,7 +29,7 @@ const Home = () => {
                         <span>Stay Tuned for more updates coming soon!</span>
                     </div>
 
-                    <Link className='hide-pc text-center w-full my-[1rem] justify-center py-[0.8rem] px-[1.2rem] bg-[#157EC1] font-bold text-[1.2rem] text-white rounded-full'>Join Us</Link>
+                    <Link to='/SignUp' className='hide-pc text-center w-full my-[1rem] justify-center py-[0.8rem] px-[1.2rem] bg-[#157EC1] font-bold text-[1.2rem] text-white rounded-full'>Sign Up</Link>
                 </div>
 
                 <div className="w-[35%]">
@@ -46,7 +46,7 @@ const Home = () => {
                             disableOnInteraction: false,
                         }}
                         modules={[Autoplay,]}
-                        className="main-slider-home min-w-[20rem] my-[-2rem] hide-mobile"
+                        className="main-slider-home min-w-[100%] my-[-2rem] hide-mobile"
                     >
                         <SwiperSlide className='w-full'>
                             <img src={slider_home_1} />
@@ -107,9 +107,17 @@ const Home = () => {
 
                 <div className='mt-[2rem] text-[#525252] hide-pc text-[12px] w-full flex justify-center'>
                     <ul className='flex justify-center'>
-                        <li>About Us</li>
-                        <li className='mx-[1rem]'>Privacy Policy</li>
-                        <li>Terms and Conditions</li>
+                        <li>
+                            <Link to='/AboutUs'>
+                                About Us
+                            </Link>
+                        </li>
+                        
+                        <li className='ml-[0.5rem]'>
+                            <Link to='/ContactUs'>
+                                Contact Us
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </main>

@@ -1,4 +1,7 @@
 /* defult css .................................................................................................................. */
+html {
+    scroll-behavior: smooth;
+}
 
 *{
     box-sizing: border-box;
@@ -39,6 +42,31 @@ main{
 }
 
 
+input:focus{
+    outline: none;
+}
+
+
+textarea:focus{
+    outline: none;
+}
+
+
+.input-hover{
+    transition: 0.3s;
+}
+
+
+.input-hover:hover{
+    border: 1px solid rgba(189, 189, 199) !important;
+}
+
+
+.input-hover:focus{
+    border: 1px solid #157EC1 !important;
+}
+
+
 /* ......................................................................................................................... ..*/
 
 
@@ -53,6 +81,7 @@ main{
     overflow-x: auto;
     width: 14rem;
     height: 100vh;
+    max-height: 100vh;
     background-color: white;
     border-right: 2px solid #F0F0F0;
     padding: 32px 24px 16px 24px;
@@ -374,6 +403,10 @@ main{
         align-items: flex-start;
         flex-direction: column;
         background-color: #F5F5F5;
+    }
+
+    .main-signup{
+        min-height: calc(100vh - 8rem) !important;
     }
 
     .slider-news-post .swiper-button-prev{

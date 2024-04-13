@@ -6,10 +6,14 @@ import PostLeyout from './leyouts/PostLeyout';
 import Home from './pages/home/Home';
 import News from './pages/news/News';
 import GreenBusinesses from './pages/GreenBusinesses/GreenBusinesses';
+import AboutUs from './pages/AboutUs/AboutUs';
+import ContactUs from './pages/ContactUs/ContactUs';
+import SignUp from './pages/SignUp/SignUp';
 import GreenBusinessessShow from './pages/GreenBusinesses/GreenBusinessessShow';
 import Awareness from './pages/awareness/Awareness';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './index.css';
+import NotFoundPage from './components/NotFoundPage';
 
 const queryClient = new QueryClient();
 const routers = createBrowserRouter(
@@ -18,6 +22,9 @@ const routers = createBrowserRouter(
       <Route path="" element={<HomeLeyout />}>
           <Route index={true} element={<Home />} />
           <Route path={'/greenBusinesses/:postid'} element={<GreenBusinessessShow />} />
+          <Route path={'/AboutUs'} element={<AboutUs />} />
+          <Route path={'/ContactUs'} element={<ContactUs />} />
+          <Route path={'/SignUp'} element={<SignUp />} />
       </Route>
 
       <Route path="" element={<PostLeyout />}>
@@ -25,6 +32,7 @@ const routers = createBrowserRouter(
           <Route path={'/greenBusinesses'} element={<GreenBusinesses />} />
           <Route path={'/awareness'} element={<Awareness />} />
       </Route>
+        <Route path="*"  element={<NotFoundPage/>}/>
     </>
   )
 )
