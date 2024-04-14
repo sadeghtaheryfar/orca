@@ -44,7 +44,6 @@ const ApiImagePost = (path) => {
                 }}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
-                loop={true}
                 spaceBetween={20}
             >
                 {data?.data?.media.map((item) => (

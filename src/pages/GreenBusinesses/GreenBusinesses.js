@@ -121,10 +121,32 @@ const GreenBusinesses = () => {
     return (
         <>
             <ProgressBar />
+
+            <div className='p-[1rem] pt-[0rem] border-b border-[#E6E6E6] lg:hidden'>
+                <div className='w-full my-[0.5rem] relative flex items-center'>
+                    <input className='px-[1.4rem] py-[0.6rem] w-full bg-[#F1F1F1] rounded-full text-[18px]' type='text' placeholder='Search' onChange={(e) => setSearchTerm(e.target.value)} />
+
+                    <button className='absolute right-[1.2rem]'>
+                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.75 20.25L16.6265 16.1265M16.6265 16.1265C17.9385 14.8145 18.75 13.002 18.75 11C18.75 6.99594 15.5041 3.75 11.5 3.75C7.49594 3.75 4.25 6.99594 4.25 11C4.25 15.0041 7.49594 18.25 11.5 18.25C13.502 18.25 15.3145 17.4385 16.6265 16.1265Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
             
             <main id='main-posts'>
-                <div className='hide-mobile mb-[2rem]'>
+                <div className='hide-mobile mb-[1rem]'>
                     <h2 className='font-semibold text-[28px]'>Green Businesses</h2>
+                </div>
+
+                <div className='my-[0.5rem] mb-[1.5rem] relative flex items-center hide-mobile'>
+                    <input className='px-[1.4rem] py-[0.6rem] w-full bg-[#F1F1F1] rounded-full text-[18px]' type='text' placeholder='Search' onChange={(e) => setSearchTerm(e.target.value)}/>
+
+                    <button className='absolute right-[1.2rem]'>
+                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.75 20.25L16.6265 16.1265M16.6265 16.1265C17.9385 14.8145 18.75 13.002 18.75 11C18.75 6.99594 15.5041 3.75 11.5 3.75C7.49594 3.75 4.25 6.99594 4.25 11C4.25 15.0041 7.49594 18.25 11.5 18.25C13.502 18.25 15.3145 17.4385 16.6265 16.1265Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
 
                 <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4'>

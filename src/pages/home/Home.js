@@ -19,7 +19,7 @@ const Home = () => {
                     <h2 className='text-[28px] text-[#525252] font-semibold mb-[2rem]'>Welcome to Orca</h2>
 
                     <p className='text-justify'>
-                        At Orca, we believe in the transformative power of public awareness to shape policies and corporate strategies for a sustainable future.  Our platform is dedicated to harnessing the collective strength of public engagement to drive meaningful change in environmental, social, and economic sustainability. 
+                        At Orca, we believe in the transformative power of public awareness to shape policies and corporate strategies for a sustainable future. Our platform is dedicated to harnessing the collective strength of public engagement to drive meaningful change in environmental, social, and economic sustainability. 
                         <br/>Join us on our mission to empower individuals and communities to make a positive impact on the world around us. Together, we can create a brighter, more sustainable future for generations to come. 
                     </p>
 
@@ -32,15 +32,16 @@ const Home = () => {
                     <Link to='/SignUp' className='hide-pc text-center w-full my-[1rem] justify-center py-[0.8rem] px-[1.2rem] bg-[#157EC1] font-bold text-[1.2rem] text-white rounded-full'>Sign Up</Link>
                 </div>
 
-                <div className="w-[35%]">
+                <div className="w-[35%] min-w-[35%]">
                     <Swiper
-                        loop={'true'}
+                        loop={true}
                         direction={'vertical'}
                         slidesPerView={'auto'}
                         centeredSlides={'true'}
                         grabCursor={'true'}
                         spaceBetween={30}
                         speed={2000}
+                        slidetoloop={0}
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,

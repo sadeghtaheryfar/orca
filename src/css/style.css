@@ -277,6 +277,11 @@ textarea:focus{
 }
 
 
+.swiper-pagination-lock{
+    display: none !important;
+}
+
+
 .slider-news-post .swiper-pagination .swiper-pagination-bullet-active{
     background-color: white;
     opacity: 1 !important;
