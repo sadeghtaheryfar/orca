@@ -236,7 +236,7 @@ const Awareness = () => {
                                     <h3>{data?.title}</h3>
                                 </div>
 
-                                <div className='text-[#525252] text-justify mt-[0.5rem] text-[15px]' dangerouslySetInnerHTML={{ __html : data?.body }}>
+                                <div className='list-style-type text-[#525252] text-justify mt-[0.5rem] text-[15px]' dangerouslySetInnerHTML={{ __html : data?.body }}>
 
                                 </div>
 

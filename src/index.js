@@ -4,7 +4,7 @@ import { BrowserRouter as Router ,Route,Routes, createBrowserRouter, createRoute
 import HomeLeyout from './leyouts/HomeLeyout';
 import PostLeyout from './leyouts/PostLeyout';
 import Home from './pages/home/Home';
-import News from './pages/news/News';
+import Announcements from './pages/announcements/Announcements';
 import GreenBusinesses from './pages/GreenBusinesses/GreenBusinesses';
 import AboutUs from './pages/AboutUs/AboutUs';
 import ContactUs from './pages/ContactUs/ContactUs';
@@ -28,7 +28,7 @@ const routers = createBrowserRouter(
       </Route>
 
       <Route path="" element={<PostLeyout />}>
-          <Route path={'/news'} element={<News />} />
+          <Route path={'/announcements'} element={<Announcements />} />
           <Route path={'/greenBusinesses'} element={<GreenBusinesses />} />
           <Route path={'/awareness'} element={<Awareness />} />
       </Route>

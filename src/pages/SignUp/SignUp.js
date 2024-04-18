@@ -18,7 +18,7 @@ const SignUp = () => {
                 </div>
 
                 <div>
-                    <h2 className='text-2xl font-semibold'>We’re Comming Soon</h2>
+                    <h2 className='text-2xl font-semibold'>Comming Soon</h2>
                 </div>
 
                 <div className='mt-[0.5rem]'>

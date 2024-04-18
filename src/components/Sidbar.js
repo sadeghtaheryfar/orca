@@ -49,7 +49,7 @@ const Sidbar = () => {
                         </li>
 
                         <li>
-                            <Link className={(location.pathname == '/news') ? 'ative-menu' : ''} to='/news'>
+                            <Link className={(location.pathname == '/announcements') ? 'ative-menu' : ''} to='/announcements'>
                                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18.3737 7.875H24.7904V14.2917M24.1908 8.4875L16.8153 15.8525C15.9039 16.7626 14.4274 16.762 13.5166 15.8513L12.1486 14.4832C11.2374 13.572 9.76001 13.572 8.84878 14.4832L3.20703 20.125" stroke="#7A7A7A" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>

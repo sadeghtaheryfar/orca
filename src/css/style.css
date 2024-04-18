@@ -67,6 +67,18 @@ textarea:focus{
 }
 
 
+.list-style-type ul{
+    margin: 1rem 0rem;
+}
+
+
+.list-style-type li{
+    margin-left: 2rem !important;
+    padding-left: 0rem !important;
+    list-style-type: circle !important;
+}
+
+
 /* ......................................................................................................................... ..*/
 
 
