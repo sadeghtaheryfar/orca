@@ -28,7 +28,7 @@ const Announcements = () => {
                             </div>
 
                             <div className='text-[#525252] text-justify mt-[0.5rem] text-[15px]'>
-                                <p>🌊 Exciting News Alert! 🚀 We're thrilled to announce that Orca, the social media platform dedicated to sustainability, will be launching by the end of April! 🌍 Orca empowers individuals to take small steps towards a more environmentally, economically, and socially sustainable future. 🌱 Join us on our mission to make a positive impact on the planet and connect with like-minded individuals passionate about sustainability. Stay tuned for updates and get ready to dive into a greener world with Orca! 🐳 hashtag#OrcaLaunch hashtag#Sustainability hashtag#GreenFuture hashtag <span className='text-blue-600'>#ComingSoon</span></p>
+                                <p>Exciting News Alert!  We're thrilled to announce that Orca, the social media platform dedicated to sustainability, will be launching by the end of April!  Orca empowers individuals to take small steps towards a more environmentally, economically, and socially sustainable future. 🌱 Join us on our mission to make a positive impact on the planet and connect with like-minded individuals passionate about sustainability. Stay tuned for updates and get ready to dive into a greener world with Orca! </p>
                             </div>
                         </div>
                     </div>

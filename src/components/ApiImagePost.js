@@ -43,7 +43,7 @@ const ApiImagePost = (path) => {
                     prevEl: '.swiper-button-prev',
                 }}
                 modules={[Pagination, Navigation]}
-                className="mySwiper"
+                className="mySwiper lg:mx-[5%]"
                 spaceBetween={20}
             >
                 {data?.data?.media.map((item) => (

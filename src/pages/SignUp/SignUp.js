@@ -12,7 +12,7 @@ const SignUp = () => {
         <>
             <main id='main-posts' className='!bg-white flex justify-center !items-center flex-col main-signup'>
                 <div className='w-[10rem] mb-[0.8rem]'>
-                    <Link to='/' className='hidden lg:block'>
+                    <Link to='/' className='lg:block'>
                         <img src={orca_logo} />
                     </Link>
                 </div>
@@ -26,7 +26,7 @@ const SignUp = () => {
                 </div>
             </main>
         </>
-    );
+    );  
 };
 
 export default SignUp;

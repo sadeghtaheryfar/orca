@@ -72,7 +72,7 @@ const GreenBusinessessShow = () => {
                             prevEl: '.swiper-button-prev',
                         }}
                         modules={[Pagination, Navigation]}
-                        className="mySwiper"
+                        className="mySwiper lg:px-[5%]"
                         loop={true}
                         spaceBetween={20}
                     >
